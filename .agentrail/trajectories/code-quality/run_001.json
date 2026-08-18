@@ -1,0 +1,11 @@
+{
+  "task_type": "code-quality",
+  "state": {
+    "number": 2,
+    "step": "format-document-pattern-corpus"
+  },
+  "action": "Inspected every demo header; added negative-fixture metadata TDD; implemented scripts/check-demo-metadata; documented per-pattern invariants; ran upstream canonical formatter, format/doc/metadata/ownership/web audits, full just check, explicit commit, pre-push checks, and push.",
+  "result": "success",
+  "reward": 1,
+  "timestamp": "2026-08-18T10:07:05"
+}

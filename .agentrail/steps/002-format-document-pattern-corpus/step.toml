@@ -1,9 +1,10 @@
 number = 2
 slug = "format-document-pattern-corpus"
-status = "in-progress"
+status = "completed"
 description = "Run the canonical ../sw-mlpl/scripts/mlpl-fmt.sh across every tracked .mlpl f..."
 role = "production"
 context_files = []
 created_at = "2026-08-18T09:24:17"
+completed_at = "2026-08-18T10:07:05"
 task_type = "code-quality"
-commits = []
+commits = ["9977070f11d48f320c59e474b7954761f2f8728d"]
