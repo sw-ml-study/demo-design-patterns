@@ -1,0 +1,11 @@
+{
+  "task_type": "repository-refactor",
+  "state": {
+    "number": 1,
+    "step": "receive-design-patterns"
+  },
+  "action": "Used repository inventory and include tracing; added shell regression contracts before implementations; migrated and relinked pattern-local sources; ran canonical mlpl-fmt, docstring/ownership/catalog audits, 21 demos, 47 mlplunit tests, full just check, explicit git staging/commit, pre-push checks, dry-run, and push.",
+  "result": "success",
+  "reward": 1,
+  "timestamp": "2026-08-18T09:53:37"
+}
