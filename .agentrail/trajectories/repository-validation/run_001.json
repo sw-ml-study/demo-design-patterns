@@ -1,0 +1,11 @@
+{
+  "task_type": "repository-validation",
+  "state": {
+    "number": 3,
+    "step": "design-patterns-closeout"
+  },
+  "action": "Audited README, DESIGN_PATTERNS, catalogs, legal files, links, AgentRail state, ownership manifests, and path portability; updated stale migration language and actual source layout; added scripts/check-closeout to just check; ran the full gate, explicit commit, all pre-push audits, and push.",
+  "result": "success",
+  "reward": 1,
+  "timestamp": "2026-08-18T16:18:17"
+}
