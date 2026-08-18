@@ -1,0 +1,41 @@
+#!/bin/sh
+set -eu
+
+repo_root=$(CDPATH= cd -- "$(dirname -- "$0")/.." && pwd)
+source_root="$repo_root/../demo-algorithms"
+
+cmp -s "$repo_root/COPYRIGHT" "$source_root/COPYRIGHT" || { echo "COPYRIGHT parity failed" >&2; exit 1; }
+cmp -s "$repo_root/LICENSE" "$source_root/LICENSE" || { echo "LICENSE parity failed" >&2; exit 1; }
+
+grep -q 'mlplunit' "$repo_root/scripts/run-tests" || { echo "native tests must delegate to mlplunit" >&2; exit 1; }
+grep -q '^status = "active"' "$repo_root/.agentrail/saga.toml" || { echo "AgentRail saga is not active during closeout" >&2; exit 1; }
+grep -q '^current_step = 3' "$repo_root/.agentrail/saga.toml" || { echo "AgentRail is not on closeout step 3" >&2; exit 1; }
+
+patterns='Abstract Factory|Builder|Factory Method|Prototype|Singleton|Adapter|Bridge|Composite|Decorator|Facade|Flyweight|Proxy|Chain of Responsibility|Command|Interpreter|Iterator|Mediator|Memento|Observer|State|Strategy|Template Method|Visitor'
+count=$(grep -Ec "^\\| ($patterns) \\|" "$repo_root/docs/gof-status.md")
+[ "$count" -eq 23 ] || { echo "expected 23 unique GoF status rows, found $count" >&2; exit 1; }
+
+awk -F '\t' 'NR > 1 && NF && $1 !~ /^gof-/ { bad=1 } END { exit bad }' "$repo_root/catalog/demos.tsv" || { echo "demo catalog contains foreign ownership" >&2; exit 1; }
+awk -F '\t' 'NR > 1 && NF && $1 !~ /^gof-/ { bad=1 } END { exit bad }' "$repo_root/catalog/tests.tsv" || { echo "test catalog contains foreign ownership" >&2; exit 1; }
+target_rule=$(printf 'demos/patterns/*\tdemos\tdesign-patterns\tkeep')
+source_rule=$(printf 'demos/patterns/*\tdemos\tdesign-patterns\tdefer')
+grep -Fq "$target_rule" "$repo_root/catalog/repository-ownership.tsv"
+grep -Fq "$source_rule" "$source_root/catalog/repository-ownership.tsv"
+
+machine_pattern=$(printf '/%s/|/%s/|%s%s' Users home 'file:' '//')
+if git -C "$repo_root" grep -nE "$machine_pattern" -- ':!.agentrail/**' >/dev/null; then
+  echo "tracked project content contains a machine-specific path" >&2
+  exit 1
+fi
+
+for file in "$repo_root/README.md" "$repo_root/DESIGN_PATTERNS.md" "$repo_root"/docs/*.md; do
+  base=$(dirname -- "$file")
+  sed -n 's/.*](\([^)]*\)).*/\1/p' "$file" |
+  while IFS= read -r link; do
+    case "$link" in http://*|https://*|mailto:*|'#'*) continue ;; esac
+    target=${link%%#*}
+    [ -e "$base/$target" ] || { echo "$file: broken relative link $link" >&2; exit 1; }
+  done
+done
+
+echo "Design-pattern closeout audit passed."

@@ -18,9 +18,8 @@ A pattern demo succeeds only if it preserves the pattern's intent: variability,
 decoupling, lifecycle, notification, traversal, or state transition. Merely
 naming a record “Factory” does not count.
 
-Current status is assessed against the locally verified `mlpl-repl` 0.20.0
-build identifying commit `185003e3` (2026-08-06). Named UDF references and
-uniform `call` now work, including references stored in records. Strategy is
+Current status is verified with `mlpl-repl` 0.20.0. Named UDF references and
+uniform `call` work, including references stored in records. Strategy is
 executable. Dynamic callable collections, UDF-capable folds/combinators,
 composition/binding, variants, and modules still gate preferred forms. Closed
 hard-coded branches are not presented as successful delegated patterns.
@@ -177,19 +176,18 @@ Chain, Command, Observer, Template Method, and Visitor.
 
 ## Demo organization
 
-Do not create 23 unrelated toy files. Use three small domains and show several
-patterns collaborating within each, plus one focused script per pattern for
-discovery:
+The extracted corpus groups focused scripts by pattern while sharing related
+definitions where patterns collaborate:
 
 ```text
 demos/patterns/
-  creational/          # focused minimal examples
-  structural/
-  behavioral/
-  case_studies/
-    graph_pipeline/    # factories, builder, adapter, bridge, facade, strategy
-    expression_tree/   # composite, interpreter, visitor, flyweight, decorator
-    event_workflow/    # command, chain, mediator, memento, observer, state
+  adapter/ bridge/ builder/ chain/ command/ factory/ ...
+src/patterns/
+  command_visitor/         # shared executable-operation protocol
+  composite_interpreter/   # shared expression representation
+  decorator_proxy/         # shared service protocol
+  observer_mediator/       # shared coordination protocol
+  support/                 # pattern-local graph representation support
 ```
 
 Each pattern page/script records:
@@ -223,9 +221,9 @@ Each pattern page/script records:
 
 ## Completion criterion
 
-“All 23 implemented” means every pattern has a runnable problem-solving demo
-in its preferred functional form plus a corresponding assertion-based test,
-with no hard-coded type switch standing in for open behavior and no OO
-machinery added solely to mimic the book's examples. The case studies must
-demonstrate that patterns compose without shared mutable state and that
-substituting one policy does not require modifying its client.
+This repository is complete as a bounded status curriculum: 22 patterns have
+honest executable evidence and Singleton has an exact gated acceptance
+contract. “All 23 implemented in preferred form” remains a future language
+milestone: every pattern would then need a runnable preferred-form demo and
+assertion-based test, with no hard-coded type switch standing in for open
+behavior and no OO machinery added solely to mimic the book's examples.

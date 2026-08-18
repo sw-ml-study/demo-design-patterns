@@ -12,7 +12,7 @@ counterexamples where appropriate.
 
 ## Start here
 
-The migration will preserve the existing all-23 status while presenting a
+The extracted curriculum preserves the all-23 status while presenting this
 short learning path:
 
 1. Strategy, Adapter, Factory, Bridge, and Template Method for substitution;
@@ -20,7 +20,7 @@ short learning path:
 3. Facade, Chain, Observer, Mediator, State, Memento, Prototype, and Flyweight;
 4. closed Composite/Interpreter and the remaining capability gates.
 
-After the corpus lands, run:
+Run the complete corpus with:
 
 ```sh
 just demos
@@ -28,8 +28,14 @@ just tests
 just check
 ```
 
-`just tests` delegates native `.mlpl` suites to `mlplunit`. `just check` also
-validates catalogs, canonical formatting, and Web UI compatibility.
+`just tests` delegates all 47 native assertions to `mlplunit`. `just check`
+also validates ownership, catalogs, canonical formatting, user-function doc
+strings, demo design commentary, links/closeout state, and Web UI compatibility.
+
+Twenty-two patterns have executable evidence in 21 focused demos. Singleton
+remains explicitly gated on evaluate-once modules, private construction, and a
+stable exported identity/lifecycle contract; see [the complete status
+matrix](docs/gof-status.md).
 
 ## Repository structure
 

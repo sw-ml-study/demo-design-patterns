@@ -17,6 +17,7 @@ audit:
     ./scripts/check-format
     ./scripts/check-docstrings
     ./scripts/check-demo-metadata
+    ./scripts/check-closeout
     ./tests/test-repository-ownership
     ./tests/test-web-standalone
     ./tests/test-demo-metadata
