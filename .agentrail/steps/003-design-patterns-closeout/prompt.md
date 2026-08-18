@@ -1,0 +1,1 @@
+Verify the concise learning path and all-23 status, catalogs, links, exact legal parity, AgentRail state, mlplunit usage, canonical format, doc strings/comments, no machine-specific paths, and standalone web files. Run full checks, commit/push any closeout changes, then complete with --done.

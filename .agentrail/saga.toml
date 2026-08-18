@@ -1,0 +1,6 @@
+name = "design-patterns-extraction"
+status = "active"
+current_step = 1
+created_at = "2026-08-18T09:24:17"
+plan_file = ".agentrail/plan.md"
+retroactive = false

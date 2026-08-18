@@ -1,0 +1,9 @@
+number = 2
+slug = "format-document-pattern-corpus"
+status = "pending"
+description = "Run the canonical ../sw-mlpl/scripts/mlpl-fmt.sh across every tracked .mlpl f..."
+role = "production"
+context_files = []
+created_at = "2026-08-18T09:24:17"
+task_type = "code-quality"
+commits = []
