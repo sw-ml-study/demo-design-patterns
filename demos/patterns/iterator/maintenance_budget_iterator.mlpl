@@ -3,6 +3,7 @@
 # data_structure: immutable numeric collection/index iterator state
 # algorithm: protocol-driven sequential consumption with budget stop condition
 # representation: consumer uses has-next/next and never indexes the collection directly
+# invariant: the cursor advances monotonically and never exceeds the retained collection length
 # dynamic_size: yes
 # logical_complexity: O(consumed jobs) time and accepted-output space
 # current_copy_complexity: immutable concat copies growing accepted output; iterator records retain the collection value

@@ -1,0 +1,18 @@
+#!/bin/sh
+set -eu
+
+repo_root=$(CDPATH= cd -- "$(dirname -- "$0")/.." && pwd)
+demo_root=${DEMO_METADATA_ROOT:-"$repo_root/demos"}
+[ -d "$demo_root" ] || { echo "Demo metadata audit passed: no demos directory."; exit 0; }
+
+bad=0
+for file in $(find "$demo_root" -type f -name '*.mlpl' | sort); do
+  for field in representation invariant logical_complexity current_copy_complexity explicit_loops target_loops; do
+    if ! grep -q "^# $field:" "$file"; then
+      echo "$file: missing # $field: commentary" >&2
+      bad=1
+    fi
+  done
+done
+[ "$bad" -eq 0 ] || exit 1
+echo "Demo metadata audit passed."

@@ -16,8 +16,10 @@ audit:
     ./scripts/check-web-standalone
     ./scripts/check-format
     ./scripts/check-docstrings
+    ./scripts/check-demo-metadata
     ./tests/test-repository-ownership
     ./tests/test-web-standalone
+    ./tests/test-demo-metadata
     ./tests/test-bootstrap
 
 check: audit demos tests

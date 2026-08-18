@@ -1,0 +1,27 @@
+#!/bin/sh
+set -eu
+
+repo_root=$(CDPATH= cd -- "$(dirname -- "$0")/.." && pwd)
+tmp_dir=$(mktemp -d "${TMPDIR:-/tmp}/design-pattern-metadata.XXXXXX")
+trap 'rm -rf "$tmp_dir"' EXIT HUP INT TERM
+
+valid="$tmp_dir/valid.mlpl"
+missing="$tmp_dir/missing.mlpl"
+printf '%s\n' \
+  '# representation: immutable value' \
+  '# invariant: value remains nonnegative' \
+  '# logical_complexity: O(1)' \
+  '# current_copy_complexity: constant-size scalar' \
+  '# explicit_loops: 0' \
+  '# target_loops: 0' > "$valid"
+DEMO_METADATA_ROOT="$tmp_dir" "$repo_root/scripts/check-demo-metadata" >/dev/null
+
+cp "$valid" "$missing"
+sed -i.bak '/# invariant:/d' "$missing"
+rm "$missing.bak"
+if DEMO_METADATA_ROOT="$tmp_dir" "$repo_root/scripts/check-demo-metadata" >/dev/null 2>&1; then
+  echo "expected missing invariant commentary to fail" >&2
+  exit 1
+fi
+
+echo "Demo metadata regression tests passed."

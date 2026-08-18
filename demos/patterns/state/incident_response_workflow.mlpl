@@ -3,6 +3,7 @@
 # data_structure: immutable numeric state record and effect-description vectors
 # algorithm: closed state/event transition dispatch with effects interpreted at the boundary
 # representation: status tags 0 reported, 1 acknowledged, 2 resolved; events 1 acknowledge, 2 resolve, 3 reopen
+# invariant: every successful event follows the closed transition table and increments revision once
 # dynamic_size: effect vectors are returned per transition
 # logical_complexity: O(1) transition and O(effects) boundary interpretation
 # current_copy_complexity: small records/vectors are reconstructed per transition

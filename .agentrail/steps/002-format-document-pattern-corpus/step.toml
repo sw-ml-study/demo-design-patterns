@@ -1,6 +1,6 @@
 number = 2
 slug = "format-document-pattern-corpus"
-status = "pending"
+status = "in-progress"
 description = "Run the canonical ../sw-mlpl/scripts/mlpl-fmt.sh across every tracked .mlpl f..."
 role = "production"
 context_files = []

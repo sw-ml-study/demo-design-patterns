@@ -3,6 +3,7 @@
 # data_structure: immutable room-plan state plus flat fixed-width snapshot history
 # algorithm: capture originator states and pop/restore the latest caretaker memento
 # representation: caretaker stores numeric snapshots/revisions without applying domain transitions
+# invariant: each memento restores exactly one complete room-plan revision without changing history inputs
 # dynamic_size: yes
 # logical_complexity: O(rooms) capture/restore and O(history*rooms) immutable history copying
 # current_copy_complexity: concat/prefix copy snapshot history; physical structural sharing is not observable or claimed

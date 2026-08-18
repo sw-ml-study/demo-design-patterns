@@ -3,6 +3,7 @@
 # data_structure: immutable request, rates, fleet vectors, and effect description
 # algorithm: validate, price, allocate first-fit vehicle, describe boundary effects
 # representation: one public orchestration function composes three subsystem interfaces
+# invariant: a successful booking is validated, priced, and assigned one sufficiently capable vehicle
 # dynamic_size: fleet vectors are dynamically sized
 # logical_complexity: O(fleet vehicles)
 # current_copy_complexity: input vectors retained; constant result/effect records

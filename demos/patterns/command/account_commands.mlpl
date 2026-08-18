@@ -3,6 +3,7 @@
 # data_structure: fixed executable command records plus immutable account state/effects
 # algorithm: uniform invocation of captured numeric argument/environment
 # representation: each command carries execute UDF, argument record, and environment record
+# invariant: invocation returns a new account version and never mutates the retained prior state
 # dynamic_size: effect vectors are returned per invocation
 # logical_complexity: O(1) per command
 # current_copy_complexity: constant-size state/effect records

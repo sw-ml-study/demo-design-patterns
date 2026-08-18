@@ -3,6 +3,7 @@
 # data_structure: immutable order record plus injected constructor UDF reference
 # algorithm: construct then summarize through one unchanged client workflow
 # representation: named UDF reference supplies creation behavior; product is an immutable record
+# invariant: every successful product preserves the requested order identifier and unit count
 # dynamic_size: no
 # logical_complexity: O(1)
 # current_copy_complexity: constant-size records

@@ -3,6 +3,7 @@
 # data_structure: numeric reading vector plus fixed callable implementation record
 # algorithm: validation followed by delegated total/peak aggregation
 # representation: abstraction consumes a common data envelope and implementation protocol
+# invariant: each implementation returns equivalent units through the same total and peak protocol
 # dynamic_size: yes
 # logical_complexity: O(samples)
 # current_copy_complexity: input vectors retained; constant-size result records

@@ -3,6 +3,7 @@
 # data_structure: nested immutable service/environment records with UDF references
 # algorithm: recursive delegation followed by additive accounting
 # representation: every layer implements the same request/environment quote protocol
+# invariant: each decorator delegates exactly once before adding its own amount and accounting effect
 # dynamic_size: accounting effect vector grows with decorator depth
 # logical_complexity: O(layers)
 # current_copy_complexity: growing accounting vectors and nested environments

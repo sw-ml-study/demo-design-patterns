@@ -3,6 +3,7 @@
 # data_structure: immutable target/proxy records, request state, and numeric effects
 # algorithm: authorize, delegate through target protocol, return new state and effects
 # representation: target and Proxy expose the same request/environment callable protocol
+# invariant: rejected requests never reach the target and accepted requests preserve target results
 # dynamic_size: effect vectors describe boundary work
 # logical_complexity: O(1) plus effect concatenation
 # current_copy_complexity: constant records and small effect vectors

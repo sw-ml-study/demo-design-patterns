@@ -3,6 +3,7 @@
 # data_structure: fixed callable participant record plus immutable participant states/effects
 # algorithm: mediator invokes reserve then billing transitions and combines results
 # representation: participants know only request/state/environment; mediator owns coordination
+# invariant: participants communicate only through the mediator and retain their independent prior states
 # dynamic_size: effect vector combines participant descriptions
 # logical_complexity: O(1) for two fixed participants
 # current_copy_complexity: small state/effect records rebuilt

@@ -3,6 +3,7 @@
 # data_structure: immutable stage records and fixed record of step UDF references
 # algorithm: invariant prepare-analyze-publish sequence with delegated steps
 # representation: stage numbers enforce ordering; effects remain numeric descriptions
+# invariant: every successful workflow executes prepare then analyze then publish exactly once
 # dynamic_size: yes
 # logical_complexity: O(readings)
 # current_copy_complexity: normalized vectors and constant-size stage records

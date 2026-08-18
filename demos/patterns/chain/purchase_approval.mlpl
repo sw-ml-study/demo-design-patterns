@@ -3,6 +3,7 @@
 # data_structure: nested immutable callable handler/environment records
 # algorithm: handler-local accept-or-delegate with first-acceptance short circuit
 # representation: each handler owns its decision and callable successor; no central opcode routing
+# invariant: a request is accepted at most once by the first capable handler or remains unhandled
 # dynamic_size: no; fixed three-node chain
 # logical_complexity: O(handlers visited)
 # current_copy_complexity: trace vectors grow while delegated results return

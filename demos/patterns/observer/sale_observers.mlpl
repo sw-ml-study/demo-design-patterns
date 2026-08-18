@@ -3,6 +3,7 @@
 # data_structure: fixed callable subscriber record plus independent immutable states/effects
 # algorithm: invoke each subscriber and combine returned effect descriptions
 # representation: two named subscriber fields; not a dynamic subscription collection
+# invariant: each fixed subscriber receives the same event and updates only its own returned state
 # dynamic_size: effect vectors grow with fixed notifications
 # logical_complexity: O(subscribers), fixed at two
 # current_copy_complexity: small state records/effect vectors rebuilt

@@ -3,6 +3,7 @@
 # data_structure: fixed record of related constructor UDF references
 # algorithm: invoke both family constructors then validate product compatibility
 # representation: two fixed factory records each create a worker and storage product
+# invariant: products returned by one factory share the same family identifier
 # dynamic_size: no
 # logical_complexity: O(1)
 # current_copy_complexity: constant-size factory and product records

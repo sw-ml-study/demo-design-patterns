@@ -3,6 +3,7 @@
 # data_structure: one intrinsic numeric type table plus lightweight type-ID and quantity vectors
 # algorithm: recursively resolve repeated IDs with per-order extrinsic quantities
 # representation: type attributes stored once; order rows carry only numeric ID and quantity
+# invariant: every order type ID indexes the shared intrinsic table and aligns with one quantity
 # dynamic_size: yes
 # logical_complexity: O(orders) time and output space
 # current_copy_complexity: immutable concat copies growing result vectors; intrinsic table is passed unchanged

@@ -3,6 +3,7 @@
 # data_structure: immutable staged configuration records
 # algorithm: pure with-capacity, with-replicas, with-backup transformations then build
 # representation: flags record required stages; every transformation returns a new version
+# invariant: successful plans have positive capacity and replicas while earlier drafts remain unchanged
 # dynamic_size: no
 # logical_complexity: O(1) per stage
 # current_copy_complexity: full small record rebuilt at each stage

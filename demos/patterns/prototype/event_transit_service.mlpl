@@ -3,6 +3,7 @@
 # data_structure: immutable weighted edge-list graph values
 # algorithm: clone-by-value followed by explicit payload and edge transformations
 # representation: parallel graph vectors retained in each observable version
+# invariant: each derived service is valid independently and leaves its prototype observably unchanged
 # dynamic_size: yes
 # logical_complexity: O(E) route lookup plus O(V) payload update
 # current_copy_complexity: scatter/concat copy affected vectors; physical sharing is not observable or claimed

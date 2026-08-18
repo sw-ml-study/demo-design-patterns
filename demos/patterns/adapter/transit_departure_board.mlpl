@@ -3,6 +3,7 @@
 # data_structure: source edge-list graph adapted to a target CSR route-index record
 # algorithm: pure edge-list-to-CSR conversion followed by target-protocol query
 # representation: renamed offsets, destinations, and minutes arrays isolate the consumer
+# invariant: CSR offsets delimit every source stop and preserve all edge destinations and weights
 # dynamic_size: yes
 # logical_complexity: adapter O(VE), departure query O(E)
 # current_copy_complexity: recursive CSR construction copies growing immutable vectors

@@ -3,6 +3,7 @@
 # data_structure: immutable closed expression tree plus callable Visitor algebra records
 # algorithm: recursive postorder traversal delegates literal/combine operations
 # representation: tree shape stays fixed while operation records vary independently
+# invariant: every visitor traverses the same retained tree and combines each node exactly once
 # dynamic_size: expression tree is recursive
 # logical_complexity: O(nodes) per Visitor
 # current_copy_complexity: scalar results; nested tree sharing remains unobservable
