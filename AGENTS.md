@@ -239,8 +239,12 @@ This project uses **agentrail** for session-based saga/step orchestration.
 - Follow AgentRail `next`, `begin`, work, test, commit, and `complete` exactly.
 - Use TDD and mlplunit; keep the thin `just check` gate green.
 - Share pure `src/` definitions and update catalogs/docs with each lesson.
-- Canonically format every `.mlpl` file and require user-function doc strings
-  plus representation, invariant, complexity, copy-cost, and loop commentary.
+- Every user-defined function in every `.mlpl` file must have a doc string.
+  Before every commit and again before every push, run the canonical
+  formatter across all tracked `.mlpl` files with `./scripts/check-format`
+  (which delegates to `../sw-mlpl/scripts/mlpl-fmt.sh`) and verify that no
+  `.mlpl` file needs formatting. Demos additionally require representation,
+  invariant, complexity, copy-cost, and loop commentary.
 - `include` is forbidden in `web/*.mlpl` because Web UI Editor → Load → Run
   requires standalone files; it remains allowed in `src/`, `demos/`, and tests.
 - Never modify `../sw-mlpl` or overwrite stable tools. Preserve bounded pattern

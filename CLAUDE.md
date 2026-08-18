@@ -237,9 +237,12 @@ This file gives Claude Code (and other agentrail-aware agents) the rules for thi
 - Use TDD and mlplunit for executable behavior; keep `just check` green.
 - Share pure definitions through `src/`; runners own process/filesystem
   effects. Update catalogs and learner documentation with every lesson.
-- Format every `.mlpl` file with `../sw-mlpl/scripts/mlpl-fmt.sh`. User
-  functions require doc strings and demos require representation, invariant,
-  complexity, copy-cost, and loop commentary.
+- Every user-defined function in every `.mlpl` file must have a doc string.
+  Before every commit and again before every push, run the canonical
+  formatter across all tracked `.mlpl` files with `./scripts/check-format`
+  (which delegates to `../sw-mlpl/scripts/mlpl-fmt.sh`) and verify that no
+  `.mlpl` file needs formatting. Demos additionally require representation,
+  invariant, complexity, copy-cost, and loop commentary.
 - `include` is allowed under `src/`, `demos/`, and `tests/`, but forbidden in
   `web/*.mlpl`; Web UI Editor → Load → Run requires standalone files.
 - Prefer thin `just` recipes and do not add a Makefile without an explicit

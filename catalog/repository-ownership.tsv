@@ -1,0 +1,16 @@
+pattern	scope	owner	disposition	destination	rationale
+demos/patterns/*	demos	design-patterns	keep	demo-design-patterns	Gang-of-Four executable lessons.
+src/patterns/*	source	design-patterns	keep	demo-design-patterns	Pure definitions and pattern-local support.
+tests/patterns/*	tests	design-patterns	keep	demo-design-patterns	mlplunit pattern conformance.
+tests/test-*	tests	shared	reproduce	demo-design-patterns	Repository-local shell contracts.
+catalog/*	catalog	shared	reproduce	demo-design-patterns	Pattern-only machine-readable inventories.
+scripts/*	scripts	shared	reproduce	demo-design-patterns	Thin repository-local validation and runners.
+docs/*	docs	design-patterns	keep	demo-design-patterns	Pattern reports and acceptance boundaries.
+AGENTS.md	infrastructure	shared	reproduce	demo-design-patterns	Agent instructions.
+CLAUDE.md	infrastructure	shared	reproduce	demo-design-patterns	Agent instructions.
+README.md	infrastructure	shared	split	demo-design-patterns	Repository learning path.
+COPYRIGHT	infrastructure	shared	reproduce	demo-design-patterns	Copyright notice.
+LICENSE	infrastructure	shared	reproduce	demo-design-patterns	MIT license.
+DESIGN_PATTERNS.md	infrastructure	design-patterns	keep	demo-design-patterns	Complete curriculum status.
+justfile	infrastructure	shared	reproduce	demo-design-patterns	Thin task facade.
+mlplunit.conf	infrastructure	shared	reproduce	demo-design-patterns	Native test discovery.

@@ -1,0 +1,17 @@
+#!/bin/sh
+set -eu
+
+repo_root=$(CDPATH= cd -- "$(dirname -- "$0")/.." && pwd)
+tmp_dir=$(mktemp -d "${TMPDIR:-/tmp}/design-patterns-web.XXXXXX")
+trap 'rm -rf "$tmp_dir"' EXIT HUP INT TERM
+
+printf 'answer = 42;\n' > "$tmp_dir/standalone.mlpl"
+WEB_ROOT="$tmp_dir" "$repo_root/scripts/check-web-standalone" >/dev/null
+
+printf 'include "src/example.mlpl";\n' > "$tmp_dir/not_standalone.mlpl"
+if WEB_ROOT="$tmp_dir" "$repo_root/scripts/check-web-standalone" >/dev/null 2>&1; then
+  echo "expected a web include to fail" >&2
+  exit 1
+fi
+
+echo "Web standalone regression tests passed."

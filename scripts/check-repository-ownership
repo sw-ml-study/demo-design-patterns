@@ -1,0 +1,47 @@
+#!/bin/sh
+set -eu
+
+repo_root=$(CDPATH= cd -- "$(dirname -- "$0")/.." && pwd)
+manifest=${BOUNDARY_MANIFEST:-"$repo_root/catalog/repository-ownership.tsv"}
+paths_file=${BOUNDARY_PATHS:-}
+expected=$(printf 'pattern\tscope\towner\tdisposition\tdestination\trationale')
+[ "$(sed -n '1p' "$manifest")" = "$expected" ] || {
+  echo "ownership manifest header does not match the required schema" >&2
+  exit 1
+}
+
+tmp_dir=$(mktemp -d "${TMPDIR:-/tmp}/design-pattern-ownership.XXXXXX")
+trap 'rm -rf "$tmp_dir"' EXIT HUP INT TERM
+inventory="$tmp_dir/inventory"
+if [ -n "$paths_file" ]; then
+  sort -u "$paths_file" > "$inventory"
+else
+  git -C "$repo_root" ls-files AGENTS.md CLAUDE.md README.md COPYRIGHT LICENSE \
+    DESIGN_PATTERNS.md justfile mlplunit.conf demos src tests catalog scripts docs |
+    sort -u > "$inventory"
+fi
+
+bad=0
+while IFS= read -r path; do
+  matches=0
+  owner=
+  while IFS="$(printf '\t')" read -r pattern scope rule_owner disposition destination rationale; do
+    [ "$pattern" = "pattern" ] && continue
+    case "$path" in $pattern) matches=$((matches + 1)); owner=$rule_owner ;; esac
+  done < "$manifest"
+  if [ "$matches" -ne 1 ]; then
+    echo "$path: expected exactly one ownership rule, found $matches" >&2
+    bad=1
+  elif [ "$owner" = "algorithms" ] || [ "$owner" = "data-structures" ]; then
+    echo "$path: foreign curriculum owner $owner is forbidden" >&2
+    bad=1
+  fi
+done < "$inventory"
+
+if [ -z "$paths_file" ]; then
+  for catalog in "$repo_root/catalog/demos.tsv" "$repo_root/catalog/tests.tsv"; do
+    awk -F '\t' 'NR > 1 && NF && $1 !~ /^gof-/ { print FILENAME ": non-pattern row " $1 > "/dev/stderr"; bad=1 } END { exit bad }' "$catalog" || bad=1
+  done
+fi
+[ "$bad" -eq 0 ] || exit 1
+echo "Repository ownership contract passed."

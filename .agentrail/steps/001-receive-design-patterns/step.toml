@@ -1,6 +1,6 @@
 number = 1
 slug = "receive-design-patterns"
-status = "pending"
+status = "in-progress"
 description = "Receive all design-pattern demos, src definitions, mlplunit tests, DESIGN_PAT..."
 role = "production"
 context_files = []

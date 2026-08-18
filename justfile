@@ -12,8 +12,12 @@ tests *args:
 audit:
     ./scripts/validate-catalog catalog/demos.tsv
     ./scripts/validate-catalog catalog/tests.tsv
+    ./scripts/check-repository-ownership
     ./scripts/check-web-standalone
     ./scripts/check-format
+    ./scripts/check-docstrings
+    ./tests/test-repository-ownership
+    ./tests/test-web-standalone
     ./tests/test-bootstrap
 
 check: audit demos tests
